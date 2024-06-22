@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+		// подсвечивает места, где не указан тип
+		// однако это не означает, что теперь вовсе нельзя использщовать any
+		// это означает лишь, что в подобных ситуациях разработчик должен писать явно any
+		"noImplicitAny": true,
+		// модульная система commonjs es6 и тд (используют esnext или es6)
+		"module": "ESNext",
+		// в какую спецификацию компилируем - для поддержки большинства браузеров
+		"target": "es5",
+		// для использ конструкции react
+		"jsx": "react-jsx",
+		// компилятор будет обрабатывать не только TS файлы, но и JS
+		"allowJs": true,
+		// для абсолютного импорта
+		// "baseUrl": ".",
+
+		"moduleResolution": "node",
+		// позволяет использовать обычный импорт без *
+		// import webpack from 'webpack', а не import * as webpack from 'webpack';
+		// это работает даже с пакетами у которых нету default import
+		"allowSyntheticDefaultImports": true,
+		// esmoduleinterop позволяет работать с пакетами, которые используют
+		// common js как с обычными пакета с помощью import (require() module.export) = common js
+		// т.е. позволяет использщовать обычные import export
+		"esModuleInterop": true
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	}
+}
