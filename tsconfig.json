@@ -14,7 +14,12 @@
 		// компилятор будет обрабатывать не только TS файлы, но и JS
 		"allowJs": true,
 		// для абсолютного импорта
-		// "baseUrl": ".",
+		"baseUrl": ".",
+		// чтобы все импорты были без вложений из папки src
+		// не так - '../../../../shared/config/theme/ThemeContex';
+		"paths": {
+			"*": ["./src/*"] // а так - 'shared/config/theme/ThemeContex';
+		},
 
 		"moduleResolution": "node",
 		// позволяет использовать обычный импорт без *

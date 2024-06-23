@@ -13,7 +13,3 @@ export function classNames(
 			.map(([className]) => className)
 	].join(' ');
 }
-
-classNames('remove-btn', { hovered: true, selectable: true, red: false }, [
-	'pdg'
-]);
