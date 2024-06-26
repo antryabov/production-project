@@ -3,7 +3,7 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb'],
+    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -12,7 +12,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint'],
+    plugins: ['react', '@typescript-eslint', 'i18next'],
     rules: {
         'react/jsx-indent': [2, 4], // отступы в jsx
         indent: [2, 4], // обычные отступы
@@ -37,6 +37,10 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
         'no-tabs': ['error', { allowIndentationTabs: true }],
+        // указывает на то, что нужен перевод в разметке для i18n
+        'i18next/no-literal-string': ['error', {
+            markupOnly: true,
+        }],
     },
     globals: {
         // eslint ругался, что переменная нигде не использовалась
