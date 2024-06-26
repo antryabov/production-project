@@ -1,4 +1,4 @@
 {
-	"presets": ["@babel/preset-env"],
+	"presets": ["@babel/preset-env"], // для es6 и выше
 	"plugins": ["i18next-extract"]
 }
