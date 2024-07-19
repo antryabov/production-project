@@ -4,7 +4,10 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
+    extends: ['plugin:react/recommended',
+        'airbnb',
+        'plugin:i18next/recommended',
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
@@ -18,7 +21,9 @@ module.exports = {
         'react/jsx-indent': [2, 4], // отступы в jsx
         indent: [2, 4], // обычные отступы
         'react/jsx-indent-props': [2, 4], // оступы для пропсов(атрибутов)
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }], // jsx код в tsx
+        'react/jsx-filename-extension': [2,
+            { extensions: ['.js', '.jsx', '.tsx'] },
+        ], // jsx код в tsx
         'import/no-unresolved': 'off', // ошибка из за того, что у нас абсолютные импорты и это отключим
         'import/prefer-default-export': 'off', // для того, чтобы использовать дефолтные экспорты, но для удобство мы используем именованные
         // не используемые переменные - предупреждение, а не ошибка, потому что если есть
