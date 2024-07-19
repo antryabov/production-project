@@ -42,6 +42,9 @@ module.exports = {
         'i18next/no-literal-string': ['warn', {
             markupOnly: true,
         }],
+        'max-len': ['error', {
+            ignoreComments: true,
+        }],
     },
     globals: {
         // eslint ругался, что переменная нигде не использовалась
