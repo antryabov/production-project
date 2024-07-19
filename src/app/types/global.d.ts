@@ -20,4 +20,5 @@ declare module '*.png';
 declare module '*.jpeg';
 declare module '*.jpg';
 
+// глобальная переменная из PluginDefine
 declare const __IS_DEV__: boolean;

@@ -5,6 +5,7 @@ import { BuildOptions } from './types/config';
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
     // преобразует обычные иконки в реакт компоненты
     // все props будут как у svg
+    // в ThemeSwithcer
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],

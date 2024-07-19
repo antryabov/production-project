@@ -6,6 +6,7 @@ export function buildDevServer(option: BuildOptions): DevServerConfiguration {
         port: option.port,
         open: true,
         // без этого свойства не будет проксироваться через корневую страницу
+        // чтобы не было проблем с переходом между страницами
         historyApiFallback: true,
         // для hot module replacement
         hot: true,

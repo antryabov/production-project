@@ -1,4 +1,4 @@
 {
-	"presets": ["@babel/preset-env"], // для es6 и выше
+	"presets": ["@babel/preset-env", "@babel/preset-typescript"], // [для es6 и выше, для тайпскрипта]
 	"plugins": ["i18next-extract"]
 }

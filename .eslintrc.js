@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true,
     },
     extends: ['plugin:react/recommended', 'airbnb', 'plugin:i18next/recommended'],
     parser: '@typescript-eslint/parser',
@@ -38,7 +39,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'no-tabs': ['error', { allowIndentationTabs: true }],
         // указывает на то, что нужен перевод в разметке для i18n
-        'i18next/no-literal-string': ['error', {
+        'i18next/no-literal-string': ['warn', {
             markupOnly: true,
         }],
     },

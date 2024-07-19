@@ -13,14 +13,14 @@ export function buildPluling({
         }),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contentcash:8].css',
-            chunkFilename: 'css/[name].[contentcash:8].css',
+            filename: 'css/[name].[contentcash].css',
+            chunkFilename: 'css/[name].[contentcash].css',
         }),
         new webpack.DefinePlugin({
             // прокидывает с помощью него в приложение глобальные переменные
             // так лучше писать имя переменной для того, чтобы отделить переменные,
             // которые используются в приложении
-            // нужно в файле декларации еще добавить declare const __IS_DEV__: boolean;
+            // нужно в файле декларации типов еще добавить declare const __IS_DEV__: boolean;
             __IS_DEV__: JSON.stringify(isDev),
             // чтобы приложение знало об этой переменной
         }),

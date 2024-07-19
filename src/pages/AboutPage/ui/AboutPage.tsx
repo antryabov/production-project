@@ -6,7 +6,6 @@ function AboutPage() {
     return (
         <div>
             {t('О сайте')}
-            {t('sadsdas')}
         </div>
     );
 }
