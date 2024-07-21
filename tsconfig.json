@@ -20,7 +20,6 @@
 		"paths": {
 			"*": ["./src/*"] // а так - 'shared/config/theme/ThemeContex';
 		},
-
 		"moduleResolution": "node",
 		// позволяет использовать обычный импорт без *
 		// import webpack from 'webpack', а не import * as webpack from 'webpack';
@@ -33,7 +32,14 @@
 	},
 	"ts-node": {
 		"compilerOptions": {
-			"module": "CommonJS"
+			"module": "CommonJS",
 		}
-	}
+	},
+	"include": [
+		"./config/jest/setupTests.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/**/*.ts",
+		"**/**/*.tsx"
+	]
 }

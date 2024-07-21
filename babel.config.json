@@ -1,4 +1,13 @@
 {
-	"presets": ["@babel/preset-env", "@babel/preset-typescript"], // [для es6 и выше, для тайпскрипта]
+	"presets": [
+		"@babel/preset-env", 
+		"@babel/preset-typescript",  
+		[
+			"@babel/preset-react", 
+			{
+			"runtime": "automatic"
+		}
+	]
+	], // [для es6 и выше, для тайпскрипта, для react testing library]
 	"plugins": ["i18next-extract"]
 }

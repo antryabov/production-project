@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 
 export function buildPluling({
@@ -25,5 +26,9 @@ export function buildPluling({
             // чтобы приложение знало об этой переменной
         }),
         new webpack.HotModuleReplacementPlugin(),
+        // анализатор бандла
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+        }),
     ];
 }

@@ -46,9 +46,11 @@ module.exports = {
         // указывает на то, что нужен перевод в разметке для i18n
         'i18next/no-literal-string': ['warn', {
             markupOnly: true,
+            'jsx-attributes': true,
         }],
         'max-len': ['error', {
             ignoreComments: true,
+            code: 120,
         }],
     },
     globals: {
