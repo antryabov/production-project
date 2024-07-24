@@ -46,7 +46,7 @@ module.exports = {
         // указывает на то, что нужен перевод в разметке для i18n
         'i18next/no-literal-string': ['warn', {
             markupOnly: true,
-            'jsx-attributes': true,
+            ignoreAttribute: ['data-testid', 'to'],
         }],
         'max-len': ['error', {
             ignoreComments: true,
@@ -59,4 +59,13 @@ module.exports = {
         // укажем ее, что он используется
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            // для тестов отключим перевод
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };

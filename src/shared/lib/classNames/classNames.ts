@@ -10,7 +10,7 @@ export function classNames(
         cls,
         // спредим все из доп классов, если есть(для этого фильтер и в нем приведение к булеан)
         // если есть, то true
-        // строку приводим к булеан значению
+        // строку приводим к булеан значению - все значения с true выведет
         ...additional.filter(Boolean),
         ...Object.entries(mods)
             .filter(([_, value]) => Boolean(value))
