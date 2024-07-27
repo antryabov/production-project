@@ -11,7 +11,7 @@ function App() {
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            {/* suspense нужен для i18n. Можно указать фолбек, если много текста, который будет долго грузиться */}
+            {/* suspense нужен для i18n. Можно указать фоллбек, если много текста, который будет долго грузиться */}
             <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">

@@ -1,9 +1,9 @@
-import React from 'react';
+import 'app/styles/index.scss';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
 import { Button, ThemeButton } from './Button';
-
-import 'app/styles/index.scss';
 
 export default {
     title: 'shared/Button',
@@ -31,3 +31,11 @@ Outline.args = {
     children: 'Text',
     theme: ThemeButton.OUTLINE,
 };
+
+export const OutlineDark = Template.bind({});
+OutlineDark.args = {
+    children: 'Text',
+    theme: ThemeButton.OUTLINE,
+};
+// переопределение на темную тему локально
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];

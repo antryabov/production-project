@@ -1,4 +1,5 @@
-.app.light {
+/* был селектор .app.light и из за этого не работали стили в storybook */
+:root {
     --bg-color: #e8e8ea;
     --inverted-bg-color: #090949;
     --primary-color: #0232c2; // главный цвет шрифта для акцента (заголовки, кнопки, ссылки)
