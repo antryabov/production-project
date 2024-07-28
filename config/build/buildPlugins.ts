@@ -27,6 +27,7 @@ export function buildPluling({
         }),
     ];
 
+    // плагины для дев режима
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
         // анализатор бандла (вес бандла)
