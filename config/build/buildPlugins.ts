@@ -8,7 +8,7 @@ export function buildPluling({
     paths,
     isDev,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-    return [
+    const plugins = [
         new HtmlWebpackPlugin({
             template: paths.html,
         }),
@@ -25,10 +25,17 @@ export function buildPluling({
             __IS_DEV__: JSON.stringify(isDev),
             // чтобы приложение знало об этой переменной
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        // анализатор бандла
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
     ];
+
+    if (isDev) {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
+        // анализатор бандла (вес бандла)
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,
+            }),
+        );
+    }
+
+    return plugins;
 }
