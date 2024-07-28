@@ -68,5 +68,12 @@ module.exports = {
                 'i18next/no-literal-string': 'off',
             },
         },
+        {
+            // для сторисов отключим ошибку, если не используем function declaration
+            files: ['**/src/**/*.stories.tsx'],
+            rules: {
+                'react/function-component-definition': 'off',
+            },
+        },
     ],
 };
