@@ -37,6 +37,7 @@
 .link {
     margin-left: 10px;
     opacity: 1;
+    transition: 1s opacity;
 }
 
 .icon {
@@ -56,4 +57,8 @@
         transition: 0.2s opacity;
         width: 0;
     }
+}
+
+.lang {
+    color: var(--inverted-primary-color);
 }
