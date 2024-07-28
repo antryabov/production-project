@@ -13,6 +13,7 @@
     "ports": "sudo lsof -i :3000",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "sudo npx loki test",
+    "test:ui:upd": "sudo npx loki update",
     "test:ui:ok": "sudo npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "test:ui:report": "sudo npm run test:ui:json && sudo npm run test:ui:html",
