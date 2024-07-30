@@ -5,8 +5,9 @@ interface PortalProps {
     children: ReactNode;
     element?: HTMLElement;
 }
-/* модальные окна или тултипы должны находится на верхнем уровне, чтобы не было */
+/* модальные окна или тултипы должны находится на верхнем уровне, чтобы не было ошибок, если две модалки находится рядом */
 /* физически он переносит children в element */
+/* пример переноса модалки в боди */
 export function Portal(props: PortalProps) {
     const {
         children,
