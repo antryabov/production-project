@@ -4,9 +4,11 @@ module.exports = {
         es2021: true,
         jest: true,
     },
-    extends: ['plugin:react/recommended',
+    extends: [
+        'plugin:react/recommended',
         'airbnb',
         'plugin:i18next/recommended',
+        'plugin:react-hooks/recommended',
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -16,7 +18,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
     rules: {
         'react/jsx-indent': [2, 4], // отступы в jsx
         indent: [2, 4], // обычные отступы
@@ -52,6 +54,10 @@ module.exports = {
             ignoreComments: true,
             code: 120,
         }],
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'error',
     },
     globals: {
         // eslint ругался, что переменная нигде не использовалась
@@ -62,17 +68,12 @@ module.exports = {
     // переопределение eslint правил, чтобы на отдельные файлы были только свои правила
     overrides: [
         {
-            // для тестов отключим перевод
-            files: ['**/src/**/*.test.{ts,tsx}'],
+            // переопределяем правила для тестов и сторисов
+            files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
             rules: {
                 'i18next/no-literal-string': 'off',
-            },
-        },
-        {
-            // для сторисов отключим ошибку, если не используем function declaration
-            files: ['**/src/**/*.stories.tsx'],
-            rules: {
                 'react/function-component-definition': 'off',
+                'max-len': 'off',
             },
         },
     ],

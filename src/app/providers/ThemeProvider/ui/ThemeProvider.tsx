@@ -5,12 +5,21 @@ import {
     ThemeContex,
 } from '../lib/ThemeContex';
 
+interface ThemeProviderProps {
+    initialTheme?: Theme;
+    children: ReactNode
+}
+
 // Если есть в LS то берет ее, если нет, то ставит светлую
 // приводим строку к типу Theme (as Theme)
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
-function ThemeProvider({ children }: { children: ReactNode }) {
-    const [theme, setTheme] = useState<Theme>(defaultTheme);
+function ThemeProvider(props: ThemeProviderProps) {
+    const {
+        initialTheme,
+        children,
+    } = props;
+    const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 
     const defaultProps = useMemo(
         () => ({
