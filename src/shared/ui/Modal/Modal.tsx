@@ -12,6 +12,7 @@ interface ModalProps {
     onClose?: () => void;
 }
 
+// такие константы лучше выносить отдельно
 const ANIMATION_DELAY = 300;
 
 export function Modal(props: ModalProps) {

@@ -6,7 +6,7 @@ interface PortalProps {
     element?: HTMLElement;
 }
 /* модальные окна или тултипы должны находится на верхнем уровне, чтобы не было ошибок, если две модалки находится рядом */
-/* физически он переносит children в element */
+/* портал физически переносит children компонент в element компонент */
 /* пример переноса модалки в боди */
 export function Portal(props: PortalProps) {
     const {
