@@ -17,7 +17,7 @@ describe('counterSlice', () => {
         expect(counterReducer(state, counterActions.increment()))
             .toEqual({ value: 11 });
     });
-    // берем value не из сейта, а по дефолту взять initialState из слайса
+    // берет value не из сейта, а по дефолту взять initialState из слайса
     test('should work with empty state', () => {
         expect(counterReducer(undefined, counterActions.increment()))
             .toEqual({ value: 1 });
