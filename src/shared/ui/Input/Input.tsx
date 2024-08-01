@@ -57,6 +57,7 @@ function Input(props: InputProps) {
         setIsFocused(true);
     };
 
+    // для того, чтобы правильно передвигать каретку на выделенный участок (range и selection - learn js почитать)
     const onSelect = (event: any) => {
         setCaretPosition(event?.target?.selectionStart || 0);
     };
