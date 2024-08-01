@@ -10,6 +10,7 @@ interface ModalProps {
     children?: ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean
 }
 
 // такие константы лучше выносить отдельно
@@ -21,9 +22,11 @@ export function Modal(props: ModalProps) {
         children,
         isOpen,
         onClose,
+        lazy,
     } = props;
 
     const [isClosing, setIsClosing] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
     const mods: Record<string, boolean> = {
@@ -31,12 +34,20 @@ export function Modal(props: ModalProps) {
         [cls.isClosing]: isClosing,
     };
 
+    useEffect(() => {
+        if (isOpen) {
+            setIsMounted(true);
+        }
+    }, [isOpen]);
+
     const closeHandler = useCallback(() => {
         if (onClose) {
             setIsClosing(true);
             timerRef.current = setTimeout(() => {
                 onClose();
                 setIsClosing(false);
+                // размонтируем компонент из дом дерева
+                setIsMounted(false);
             }, ANIMATION_DELAY);
         }
     }, [onClose]);
@@ -63,6 +74,13 @@ export function Modal(props: ModalProps) {
         };
     }, [isOpen, onKeyDown]);
 
+    // если компонент ленивый и не вмонтирован, то возвращает null
+    // это еще поможет в том случае, если в модалке будет что то рендериться асинхронно
+    if (lazy && !isMounted) {
+        return null;
+    }
+
+    // иначе компонент возвращает модальное окно
     return (
         <Portal>
             <div className={classNames(cls.Modal, mods, [className])}>
