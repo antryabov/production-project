@@ -27,17 +27,16 @@ export function buildPluling({
         }),
     ];
 
-    // анализатор бандла (вес бандла)
-    // cсылка на аналайзер появляется в консоли
-    plugins.push(
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false,
-        }),
-    );
-
     // плагины для дев режима
     if (isDev) {
         plugins.push(new webpack.HotModuleReplacementPlugin());
+        // анализатор бандла (вес бандла)
+        // cсылка на аналайзер появляется в консоли
+        plugins.push(
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,
+            }),
+        );
     }
 
     return plugins;
