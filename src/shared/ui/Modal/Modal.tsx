@@ -46,8 +46,8 @@ export function Modal(props: ModalProps) {
             timerRef.current = setTimeout(() => {
                 onClose();
                 setIsClosing(false);
-                // размонтируем компонент из дом дерева
-                setIsMounted(false);
+                /* // размонтируем компонент из дом дерева
+                setIsMounted(false); */
             }, ANIMATION_DELAY);
         }
     }, [onClose]);

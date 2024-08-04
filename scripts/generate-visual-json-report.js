@@ -2,6 +2,7 @@ const { promisify } = require('util');
 const { readdir, writeFile } = require('fs');
 const { join: joinPath, relative } = require('path');
 
+// генерирует информацию для репорта для удобного просмотра дифф скриншотов через reg cli
 const asyncReaddir = promisify(readdir);
 const writeFileAsync = promisify(writeFile);
 

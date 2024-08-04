@@ -41,5 +41,5 @@
 		"./src/**/*.tsx",
 		"**/**.ts",
 		"**/**.tsx"
-	]
+, "src/features/AuthByUsername/ui/LoginModal"	]
 }

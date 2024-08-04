@@ -59,6 +59,7 @@ function Input(props: InputProps) {
 
     // для того, чтобы правильно передвигать каретку на выделенный участок (range и selection - learn js почитать)
     const onSelect = (event: any) => {
+        // при нажатии на этом месте появляется каретка или равно 0, если текста нет
         setCaretPosition(event?.target?.selectionStart || 0);
     };
 
