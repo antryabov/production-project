@@ -18,13 +18,15 @@ interface DynamicModuleLoaderProps {
     removeAfterUnmount?: boolean
 }
 
-// компонент для удобного добавления менеджера в компонента, чтобы не расписывать такую большую реализацию в компоненте
+// компонент для удобного добавления и удаления асинхронных редюсеров через менеджер в компонент,
+// чтобы не расписывать такую большую реализацию в компоненте, а просто изолируем
 export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
     const {
         children,
         reducers,
         removeAfterUnmount,
     } = props;
+
     const dispatch = useDispatch();
 
     // получаем наш стор через хук

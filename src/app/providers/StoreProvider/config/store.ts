@@ -1,4 +1,4 @@
-import { configureStore, DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { StateSchema } from './StateSchema';
@@ -11,12 +11,14 @@ export function createReduxStore(
 ) {
     // ReducersMapObject - тип для корневого редюсера в сторе
     const rootReducer: ReducersMapObject<StateSchema> = {
+        //  пропск asyncReducers нужен для стори кейсов, чтобы прокинуть асинхронное состояние
         // добавлять asyncReducers лучше в начале
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
     };
 
+    // менеджер принимает рутовый редюсер
     const reducerManager = createReducerManager(rootReducer);
 
     const store = configureStore<StateSchema>({
