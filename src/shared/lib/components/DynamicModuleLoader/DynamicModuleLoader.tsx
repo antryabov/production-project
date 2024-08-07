@@ -31,6 +31,7 @@ export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
     const dispatch = useAppDispatch();
 
     // получаем наш стор через хук
+    // приводим к типу, где существует поле reducerManager
     const store = useStore() as ReduxStoreWithManager;
 
     useEffect(() => {
@@ -40,6 +41,7 @@ export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
         // теперь редюсер изолирован внутри модуля, так как редюсер будет добавляться через менеджер, а не через стор напрямую
         // из api экспортт редюсера удаляем
             store.reducerManager.add(name, reduce);
+            // для логов, чтобы видеть, когда стейт подключился
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
@@ -48,6 +50,7 @@ export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
             Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
                 if (removeAfterUnmount) {
                     store.reducerManager.remove(name);
+                    // для логов, чтобы видеть, когда стейт очистился
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 }
             });
