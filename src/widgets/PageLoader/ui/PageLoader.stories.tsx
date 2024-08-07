@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
-import { PageLoader } from './PageLoader';
+import PageLoader from './PageLoader';
 
 export default {
     title: 'widget/PageLoader',

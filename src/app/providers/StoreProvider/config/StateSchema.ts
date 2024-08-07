@@ -2,16 +2,18 @@ import {
     AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { CounterSchema } from 'entities/Counter';
+import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUsername';
 
-// Все типы связанные с Redux
+// Все типы связанные с Redux и стейтом
 export interface StateSchema {
     counter: CounterSchema,
     user: UserSchema,
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema
+    profile?: ProfileSchema
 }
 
 // keyof достает ключи из StateSchema

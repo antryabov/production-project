@@ -11,7 +11,7 @@ export function createReduxStore(
 ) {
     // ReducersMapObject - тип для корневого редюсера в сторе
     const rootReducer: ReducersMapObject<StateSchema> = {
-        //  пропск asyncReducers нужен для стори кейсов, чтобы прокинуть асинхронное состояние
+        //  пропс asyncReducers нужен для стори кейсов, чтобы прокинуть асинхронное состояние
         // добавлять asyncReducers лучше в начале
         ...asyncReducers,
         counter: counterReducer,
@@ -34,3 +34,7 @@ export function createReduxStore(
 
     return store;
 }
+
+// сначала возвращаем тип для стора и забираем у него тип поля dispatch
+// используем дженерик для dispatch в хуке useAppDispatch
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch']

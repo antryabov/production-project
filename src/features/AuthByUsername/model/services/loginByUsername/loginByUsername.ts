@@ -19,7 +19,7 @@ interface LoginByUsernameProps {
 // createAsyncThunk - это action creator, который возвращает action после вызова
 // dispatch отработает 3 раза: 1. Когда происходит вызов loginByUsername
 // 2. когда происходит вызов thunkAPI.dispatch(userActions.setAuthData(response.data));
-// 3. Когда уже приходит со статусом fulfilled, когда делаем return response.data
+// 3. И когда ответ приходит со статусом fulfilled, когда делаем return response.data
 // если ошибка, то выполнится 2 dispatch'а (вызов и возврат ошибки 'error')
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, {rejectValue: string}>( // 1
     'login/loginByUsername',
@@ -34,7 +34,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, {rej
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             // сохраняем данные в стейт юзера
             thunkAPI.dispatch(userActions.setAuthData(response.data)); // 2
-
             return response.data; // 3
         } catch (error) {
             console.log(error);

@@ -11,8 +11,9 @@
   "Переключить": "Toggle",
   "Войти": "Log in",
   "Имя пользователя": "Username",
-	"Пароль": "Password",
+  "Пароль": "Password",
   "Форма авторизации": "Authorisation form",
   "Вы ввели неверный логин или пароль": "You have entered an incorrect login or password",
-  "Выйти": "Log out"
+  "Выйти": "Log out",
+  "Профиль": "Profile"
 }

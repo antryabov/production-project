@@ -1,13 +1,13 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Navbar } from 'widgets/Navbar';
 import { AppRouter } from './providers/router';
 
 function App() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -20,6 +20,7 @@ function App() {
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
+                    {/* отрисовываем страницы в content-page */}
                     <AppRouter />
                 </div>
             </Suspense>

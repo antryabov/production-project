@@ -1,21 +1,22 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import Button, { ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
 	className?: string;
 }
 
-export function Navbar({ className }: NavbarProps) {
+function Navbar({ className }: NavbarProps) {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // Все функции, которые передаются пропсами их лучше мемоизировать
     const onCloseModal = useCallback(() => {
@@ -63,3 +64,5 @@ export function Navbar({ className }: NavbarProps) {
         </div>
     );
 }
+
+export default memo(Navbar);

@@ -16,6 +16,7 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
     constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+        // сюда добавляем asyncThunk, к примеру, loginByUsername
         this.actionCreator = actionCreator;
         // для передачи в action нужно замокать dispatch и getState
         // присваиваем обычную замоканную функцию jest'a

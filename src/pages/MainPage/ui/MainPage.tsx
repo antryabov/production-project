@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 function MainPage() {
@@ -10,4 +11,4 @@ function MainPage() {
     );
 }
 
-export default MainPage;
+export default memo(MainPage);

@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { Dispatch } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider';
+/* import { Dispatch } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/providers/StoreProvider'; */
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
 
 // мокаем axios
 jest.mock('axios');
-
 // мокаем внутренние поля с помощью mocked для доступа, например, поле post, чтобы замокать ответ
 const mockedAxios = jest.mocked(axios, true);
 
@@ -26,7 +25,7 @@ describe('loginByUsername', () => {
 
     test('success login', async () => {
         const userValue = {
-            id: '1',
+            id: '1',``
             username: 'admin',
             password: '123',
 
@@ -72,10 +71,11 @@ describe('loginByUsername', () => {
             password: '123',
 
         };
+        // замоканные значения резолвим (имитация ответа с сервера)
         mockedAxios.post.mockReturnValue(Promise.resolve({
             data: userValue,
         }));
-
+        // написанный класс для удобства использования асинхронных thunk'ах
         const thunk = new TestAsyncThunk(loginByUsername);
         // callThunk асинхронная функция
         const result = await thunk.callThunk(userValue);

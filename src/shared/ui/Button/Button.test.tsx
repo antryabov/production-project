@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Button, ButtonTheme } from './Button';
+import Button, { ButtonTheme } from './Button';
 
 // describe обёртка для пачки тестов
 describe('Button', () => {

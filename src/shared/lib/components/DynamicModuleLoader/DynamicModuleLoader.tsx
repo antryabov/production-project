@@ -2,7 +2,8 @@ import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
 import { ReactNode, useEffect } from 'react';
-import { useDispatch, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer
@@ -27,7 +28,7 @@ export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
         removeAfterUnmount,
     } = props;
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     // получаем наш стор через хук
     const store = useStore() as ReduxStoreWithManager;
