@@ -1,19 +1,20 @@
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 import { loginReducer } from 'features/AuthByUsername';
 import 'app/styles/index.scss';
 import { profileReducer } from 'entities/Profile';
+import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
 };
 
 export const StoreDecorator = (
+    // DeepPartial из глобальный тип в index.d.ts
     store: DeepPartial<StateSchema>,
     // при необходимости, можно принимать снаружи асинхронные редюсеры для отдельных стори кейсов
-    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>,
+    asyncReducers?: ReducersList,
 ) => function (StoryComponent: Story) {
     return (
         <StoreProvider initialState={store} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>

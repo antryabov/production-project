@@ -8,14 +8,16 @@ import 'shared/config/i18n/i18n';
 import 'app/styles/index.scss';
 
 render(
-    <StoreProvider>
-        <BrowserRouter>
+    // роутер будет оберткой для всего для удобного проброса navigate через StoreProvider в store для middleware
+    // после этого можно будет пользоваться navigate в createAsyncThunk
+    <BrowserRouter>
+        <StoreProvider>
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>
-        </BrowserRouter>
-    </StoreProvider>,
+        </StoreProvider>
+    </BrowserRouter>,
     document.getElementById('root'),
 );

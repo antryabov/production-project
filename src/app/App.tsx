@@ -9,6 +9,7 @@ import { AppRouter } from './providers/router';
 function App() {
     const dispatch = useAppDispatch();
 
+    // проверка на авторизированного пользователя
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);

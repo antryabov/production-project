@@ -1,13 +1,18 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+    CombinedState, configureStore, getDefaultMiddleware, Reducer, ReducersMapObject,
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
-import { StateSchema } from './StateSchema';
+import { $api } from 'shared/api/api';
+import { NavigateOptions, To } from 'react-router-dom';
+import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
 // создание стора сделаем через функцию. Нужно для того, чтобы использовать в изолированных компонентах
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     // ReducersMapObject - тип для корневого редюсера в сторе
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -21,11 +26,25 @@ export function createReduxStore(
     // менеджер принимает рутовый редюсер
     const reducerManager = createReducerManager(rootReducer);
 
-    const store = configureStore<StateSchema>({
+    // вынесли отдельно extra аргументы из за проблемы с типами
+    const extraArg: ThunkExtraArg = {
+        api: $api,
+        // для того, чтобы навигировать после запроса
+        navigate,
+    };
+
+    const store = configureStore({
         // передаем редюсеры из менеджера
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         preloadedState: initialState,
         devTools: __IS_DEV__,
+        // миддлварена для того, чтобы было удобно делать запросы на сервер
+        // не нужно больше прописывать полный адрес, а только эндпоинт
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: extraArg,
+            },
+        }),
     });
 
     // добавляем новое поле в стор

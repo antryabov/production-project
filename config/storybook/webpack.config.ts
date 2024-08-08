@@ -11,12 +11,14 @@ export default ({ config }: {config: webpack.Configuration}) => {
         // настройка абсолютных импортов
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts', '.tsx');
+    // ! - значит, что эти поля точно не undefined
+    config!.resolve!.modules!.push(paths.src);
+    config!.resolve!.extensions!.push('.ts', '.tsx');
 
     // в конфиг можно отключать разные правила, потому что сразу можем увидеть результат работает или нет
     // eslint-disable-next-line no-param-reassign
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => { // проходимся по всем дефолтным правилам
+    // @ts-ignore
+    config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => { // проходимся по всем дефолтным правилам
         // находим правило(регулярку, которая содержит svg), которое обрабатывает svg и отключаем обработку svg для этого правила
         if (/svg/.test(rule.test as string)) { // кастовать к строке можно, но в основном коде или бизнес коде и др. лучше этого не делать
             return {
@@ -29,18 +31,19 @@ export default ({ config }: {config: webpack.Configuration}) => {
     });
 
     // svg loader
-    config.module.rules.push({
+    config.module!.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
     });
 
     // css loader
-    config.module.rules.push(buildCssLoaders(true));
+    config.module!.rules.push(buildCssLoaders(true));
 
     // скорее всего он не нужен для storybook, но добавим
-    config.plugins.push(
+    config.plugins!.push(
         new DefinePlugin({
-            __IS_DEV__: true,
+            __IS_DEV__: JSON.stringify(true),
+            __API__: JSON.stringify(''),
         }),
     );
 

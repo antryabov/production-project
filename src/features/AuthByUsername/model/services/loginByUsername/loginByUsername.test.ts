@@ -1,14 +1,14 @@
-import axios from 'axios';
+/* import axios from 'axios'; */
 /* import { Dispatch } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider'; */
 import { userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk';
 import { loginByUsername } from './loginByUsername';
 
-// мокаем axios
+/* // мокаем axios
 jest.mock('axios');
 // мокаем внутренние поля с помощью mocked для доступа, например, поле post, чтобы замокать ответ
-const mockedAxios = jest.mocked(axios, true);
+const mockedAxios = jest.mocked(axios, true); */
 
 // loginByUsername createAsyncThunk, который возвращает AsyncThunk(action)
 describe('loginByUsername', () => {
@@ -71,29 +71,33 @@ describe('loginByUsername', () => {
             password: '123',
 
         };
-        // замоканные значения резолвим (имитация ответа с сервера)
-        mockedAxios.post.mockReturnValue(Promise.resolve({
-            data: userValue,
-        }));
+
         // написанный класс для удобства использования асинхронных thunk'ах
         const thunk = new TestAsyncThunk(loginByUsername);
+
+        // замоканные значения резолвим (имитация ответа с сервера)
+        thunk.api.post.mockReturnValue(Promise.resolve({
+            data: userValue,
+        }));
+
         // callThunk асинхронная функция
         const result = await thunk.callThunk(userValue);
         // будет возможность запускать thunk много раз, если будет какой-то изощренный кейс
         expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
-        expect(mockedAxios.post).toHaveBeenCalled();
+        expect(thunk.api.post).toHaveBeenCalled();
         expect(thunk.dispatch).toHaveBeenCalledTimes(3);
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(userValue);
     });
 
     test('error login', async () => {
-        mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
         const thunk = new TestAsyncThunk(loginByUsername);
+
+        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
         // callThunk асинхронная функция
         const result = await thunk.callThunk({ username: '123', password: '123' });
 
-        expect(mockedAxios.post).toHaveBeenCalled();
+        expect(thunk.api.post).toHaveBeenCalled();
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(result.meta.requestStatus).toBe('rejected');
         // вернется имя ошибки в случае rejected

@@ -1,6 +1,5 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
-import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
+import { ReduxStoreWithManager, StateSchemaKey } from 'app/providers/StoreProvider';
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -8,9 +7,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 export type ReducersList = {
     [name in StateSchemaKey]?: Reducer
 }
-
-// для кортежа добавления редусеров через forEach
-type ReducersListEntry = [StateSchemaKey, Reducer]
 
 interface DynamicModuleLoaderProps {
     children: ReactNode;
@@ -36,20 +32,20 @@ export function DynamicModuleLoader(props: DynamicModuleLoaderProps) {
 
     useEffect(() => {
         // для добавления списка редусеров
-        Object.entries(reducers).forEach(([name, reduce]: ReducersListEntry) => {
+        Object.entries(reducers).forEach(([name, reduce]) => {
             // в момент монтирования компонента добавляем редюсер
         // теперь редюсер изолирован внутри модуля, так как редюсер будет добавляться через менеджер, а не через стор напрямую
         // из api экспортт редюсера удаляем
-            store.reducerManager.add(name, reduce);
+            store.reducerManager.add(name as StateSchemaKey, reduce); // Точно знаем, что всегда приходит ключ(название редюсера)
             // для логов, чтобы видеть, когда стейт подключился
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
         // при демонтировании компоненты мы удаляем этот редюсер
         return () => {
-            Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
+            Object.entries(reducers).forEach(([name]) => {
                 if (removeAfterUnmount) {
-                    store.reducerManager.remove(name);
+                    store.reducerManager.remove(name as StateSchemaKey);
                     // для логов, чтобы видеть, когда стейт очистился
                     dispatch({ type: `@DESTROY ${name} reducer` });
                 }

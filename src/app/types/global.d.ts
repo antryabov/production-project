@@ -22,3 +22,9 @@ declare module '*.jpg';
 
 // глобальная переменная из PluginDefine
 declare const __IS_DEV__: boolean;
+declare const __API__: string;
+
+// наш собственный DeepPartial в глобальной декларации
+type DeepPartial<T> = T extends object ? {
+    [P in keyof T]?: DeepPartial<T[P]>;
+} : T;

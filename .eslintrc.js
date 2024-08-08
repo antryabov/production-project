@@ -59,12 +59,14 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        'no-undef': 'off',
     },
     globals: {
         // eslint ругался, что переменная нигде не использовалась
         // но эта переменная глобальная, которая указана в плагине вебпака
         // укажем ее, что он используется
         __IS_DEV__: true,
+        __API__: true,
     },
     // переопределение eslint правил, чтобы на отдельные файлы были только свои правила
     overrides: [

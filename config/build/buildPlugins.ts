@@ -7,6 +7,7 @@ import { BuildOptions } from './types/config';
 export function buildPluling({
     paths,
     isDev,
+    apiUrl,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({
@@ -17,6 +18,7 @@ export function buildPluling({
             filename: 'css/[name].[contentcash].css',
             chunkFilename: 'css/[name].[contentcash].css',
         }),
+        // для проброса глобальным переменных изменяем еще файлы отвечающие за конфигурация jest, storybook, eslint, global.d.ts(чтобы знал ts о переменных) и в самом конфигурационном файле webpack
         new webpack.DefinePlugin({
             // прокидывает с помощью него в приложение глобальные переменные
             // так лучше писать имя переменной для того, чтобы отделить переменные,
@@ -24,6 +26,7 @@ export function buildPluling({
             // нужно в файле декларации типов еще добавить declare const __IS_DEV__: boolean;
             __IS_DEV__: JSON.stringify(isDev),
             // чтобы приложение знало об этой переменной
+            __API__: JSON.stringify(apiUrl),
         }),
     ];
 

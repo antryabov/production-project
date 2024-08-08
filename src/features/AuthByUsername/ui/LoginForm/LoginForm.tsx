@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Button, { ButtonTheme } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -53,6 +53,22 @@ function LoginForm(props: LoginFormProps) {
             onSuccess();
         }
     }, [dispatch, onSuccess, password, username]);
+
+    const onKeyDown = useCallback((event: KeyboardEvent) => {
+        if (event.key === 'Enter') {
+            onLoginClick();
+        }
+    }, [onLoginClick]);
+
+    useEffect(() => {
+        // вешается обработчик, когда монтируется компонент
+        window.addEventListener('keydown', onKeyDown);
+
+        // выполняется при демонтировании компонента
+        return () => {
+            window.removeEventListener('keydown', onKeyDown);
+        };
+    }, [onKeyDown]);
 
     return (
         <DynamicModuleLoader
