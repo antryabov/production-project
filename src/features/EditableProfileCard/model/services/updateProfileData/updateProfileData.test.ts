@@ -22,12 +22,11 @@ describe('updateProfileData', () => {
                 form: data,
             },
         });
-        // замоканные значения резолвим (имитация ответа с сервера)
+        // что должен вернуть вызов async thunk
         thunk.api.put.mockReturnValue(Promise.resolve({ data }));
 
         // callThunk асинхронная функция
         const result = await thunk.callThunk();
-        // будет возможность запускать thunk много раз, если будет какой-то изощренный кейс
         expect(thunk.api.put).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
         expect(result.payload).toEqual(data);

@@ -92,7 +92,7 @@ describe('profileSlice', () => {
         expect(profileReducer(
             state as ProfileSchema,
             // в кейсах экстра редюсеров все кейсы - экшены
-            // fulfilled ожидает аргументы
+            // fulfilled ожидает аргументы (есть кейсы, где не нужны аргументы)
             // когда успешно выполнился async thunk, то должен вернуть данные профиль
             updateProfileData.fulfilled(data, ''),
         )).toEqual({

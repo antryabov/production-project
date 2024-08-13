@@ -17,13 +17,13 @@ export const useTheme = (): UseThemeResult => {
     const toogleTheme = () => {
         let newTheme: Theme;
         switch (theme) {
-        case Theme.LIGHT:
-            newTheme = Theme.DARK;
-            break;
         case Theme.DARK:
             newTheme = Theme.LIGHT;
             break;
-        case Theme.ORANGE:
+        case Theme.LIGHT:
+            newTheme = Theme.PINK;
+            break;
+        case Theme.PINK:
             newTheme = Theme.DARK;
             break;
         default:

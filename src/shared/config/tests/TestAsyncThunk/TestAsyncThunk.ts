@@ -8,7 +8,7 @@ type ActionCreatorType<Return, Arg, RejectedValue>
 
 // мокаем axios
 jest.mock('axios');
-// мокаем внутренние поля с помощью mocked для доступа, например, поле post, чтобы замокать ответ
+// мокаем внутренние поля с помощью mocked для доступа, например, поле post, чтобы замокать ответ (глубокое погружение для типов)
 const mockedAxios = jest.mocked(axios, true);
 
 // абстракция для удоства тестирования асинхронных thunk'ов
