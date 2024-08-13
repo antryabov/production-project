@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import {
     ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
@@ -7,15 +7,16 @@ import cls from './Input.module.scss';
 // из за конфликта типов(в инпуте уже есть value и onChange), нужно исключить дефолтные пропсы из инпута
 // потому то onChange стандартный принимает event, а кастомный onChange принимает value
 // тип Omit позволяет забрать все пропсы, но исключить те, которые ненужны(вторым аргументом)
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     type?: string;
     onChange?: (value: string) => void;
     placeholder?: string,
-    autofocus?: boolean
+    autofocus?: boolean,
+    readonly?: boolean
 }
 
 function Input(props: InputProps) {
@@ -26,12 +27,15 @@ function Input(props: InputProps) {
         placeholder,
         type = 'text',
         autofocus,
+        readonly,
         ...otherProps
     } = props;
 
     const [isFocused, setIsFocused] = useState(false);
     const [caretPosition, setCaretPosition] = useState(0);
     const ref = useRef<HTMLInputElement>(null);
+
+    const isCaretVisible = isFocused && !readonly;
 
     useEffect(() => {
         // компонент монтируется в самом начале и за это время фокус сбросится
@@ -63,8 +67,12 @@ function Input(props: InputProps) {
         setCaretPosition(event?.target?.selectionStart || 0);
     };
 
+    const mods: Mods = {
+        [cls.readonly]: readonly,
+    };
+
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder}>`}
@@ -80,9 +88,10 @@ function Input(props: InputProps) {
                     onFocus={onFocus}
                     onBlur={onBlur}
                     onSelect={onSelect}
+                    readOnly={readonly}
                     {...otherProps}
                 />
-                {isFocused && (
+                {isCaretVisible && (
                     <span
                         className={cls.caret}
                         // движение каретки

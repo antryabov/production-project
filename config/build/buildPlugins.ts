@@ -8,6 +8,7 @@ export function buildPluling({
     paths,
     isDev,
     apiUrl,
+    project,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({
@@ -27,6 +28,8 @@ export function buildPluling({
             __IS_DEV__: JSON.stringify(isDev),
             // чтобы приложение знало об этой переменной
             __API__: JSON.stringify(apiUrl),
+            // для разделения проекта на среды, в которых будет выполняться код
+            __PROJECT__: JSON.stringify(project),
         }),
     ];
 

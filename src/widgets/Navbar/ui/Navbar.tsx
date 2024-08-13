@@ -6,6 +6,7 @@ import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useNavigate } from 'react-router-dom';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -17,6 +18,7 @@ function Navbar({ className }: NavbarProps) {
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     // Все функции, которые передаются пропсами их лучше мемоизировать
     const onCloseModal = useCallback(() => {
@@ -29,7 +31,8 @@ function Navbar({ className }: NavbarProps) {
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
-    }, [dispatch]);
+        navigate('/');
+    }, [dispatch, navigate]);
 
     if (authData) {
         return (

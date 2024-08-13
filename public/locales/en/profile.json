@@ -3,5 +3,21 @@
   "hello": "hello",
   "edit": "Edit",
   "your_name": "Your name",
-  "your_lastname": "Your lastname"
+  "your_lastname": "Your lastname",
+  "error_server": "Error receiving data from the server",
+  "try_refreshing": "Try refreshing the page",
+  "cancel": "Cancel",
+  "save": "Save",
+  "age": "Your age",
+  "city": "City",
+  "country": "Country",
+  "avatar": "Avatar",
+  "username": "Username",
+  "user_avatar": "User avatar",
+  "currency_label": "Specify currency",
+  "incorrect_data": "Incorrect data",
+  "incorrect_age": "Incorrect age",
+  "incorrect_city": "Incorrect city",
+  "no_data": "Data not specified",
+  "server_error": "Server error when saving data"
 }

@@ -11,7 +11,7 @@ jest.mock('axios');
 // мокаем внутренние поля с помощью mocked для доступа, например, поле post, чтобы замокать ответ
 const mockedAxios = jest.mocked(axios, true);
 
-// класс создан для удоства тестирования асинхронных thunk'ов
+// абстракция для удоства тестирования асинхронных thunk'ов
 // указаны обобщающие типы, чтобы подходили для всех thunk'ов
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
     // описание типов
@@ -25,19 +25,22 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
 
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>;
 
-    constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+    constructor(
+        actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
+        state?: DeepPartial<StateSchema>,
+    ) {
         // сюда добавляем asyncThunk, к примеру, loginByUsername
         this.actionCreator = actionCreator;
         // для передачи в action нужно замокать dispatch и getState
         // присваиваем обычную замоканную функцию jest'a
         // в каждом объекте функции будут уникальные
         this.dispatch = jest.fn();
-        this.getState = jest.fn();
+        this.getState = jest.fn(() => state as StateSchema);
         this.navigate = jest.fn();
         this.api = mockedAxios;
     }
 
-    // асинхронная функция
+    // асинхронная функция вызов async thunk
     async callThunk(arg: Arg) {
         // createAsyncThunk - это action creator, который возвращает action после вызова
         const action = this.actionCreator(arg);
