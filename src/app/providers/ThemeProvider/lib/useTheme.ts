@@ -15,7 +15,20 @@ export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext<ThemeContextProps>(ThemeContex);
 
     const toogleTheme = () => {
-        const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+        let newTheme: Theme;
+        switch (theme) {
+        case Theme.LIGHT:
+            newTheme = Theme.DARK;
+            break;
+        case Theme.DARK:
+            newTheme = Theme.LIGHT;
+            break;
+        case Theme.ORANGE:
+            newTheme = Theme.DARK;
+            break;
+        default:
+            newTheme = Theme.LIGHT;
+        }
         setTheme?.(newTheme);
         // навешываем тему на body для правильной работы темы и динамической замены переменных
         document.body.className = newTheme;
