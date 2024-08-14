@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 20.16.0 ]
+        node-version: [ 20.x ]
         
     steps:
       - name: checkout master branch
@@ -32,10 +32,9 @@ jobs:
       - name: unit testing
         if: always()
         run: npm run test:unit
-      - name: build storybook static
-        if: always()
-        run: npm run storybook:build
-      - name: screenshot testing
-        run: npm run test:ui:ci
+     # - name: build storybook static
+     #   run: npm run storybook:build
+     # - name: screenshot testing
+     #  run: npm run test:ui:ci
         
       

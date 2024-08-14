@@ -1,18 +1,19 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense, useEffect } from 'react';
-import { userActions } from 'entities/User';
+import { getUserMounted, userActions } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Navbar } from 'widgets/Navbar';
+import { useSelector } from 'react-redux';
 import { AppRouter } from './providers/router';
 
 function App() {
     const dispatch = useAppDispatch();
-
+    const mounted = useSelector(getUserMounted);
     // проверка на авторизированного пользователя
     useEffect(() => {
         dispatch(userActions.initAuthData());
-    }, [dispatch]);
+    }, [dispatch, mounted]);
 
     return (
         <div className={classNames('app', {}, [])}>
@@ -22,7 +23,7 @@ function App() {
                 <div className="content-page">
                     <Sidebar />
                     {/* отрисовываем страницы в content-page */}
-                    <AppRouter />
+                    {mounted && <AppRouter />}
                 </div>
             </Suspense>
         </div>
