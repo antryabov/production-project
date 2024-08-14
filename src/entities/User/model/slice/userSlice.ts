@@ -19,6 +19,9 @@ export const userSlice = createSlice({
             if (user) {
                 state.authData = JSON.parse(user);
             }
+            // AppRouter рендерится быстрее чем происходит авторизация, поэтому не работают как нужно приватные пути
+            // маунтим AppRouter, когда пользователь уже авторизовался или не авторизовался, если пользователь не найден,
+            // чтобы вернуть children в RequireAuth вместо Navigate
             state._mounted = true;
         },
         logout: (state) => {

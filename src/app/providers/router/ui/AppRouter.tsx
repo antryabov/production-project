@@ -10,6 +10,7 @@ function AppRouter() {
         const element = (
             <div className="page-wrapper">{route.element}</div>
         );
+
         return (
             <Route
                 key={route.path}
