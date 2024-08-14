@@ -4,7 +4,7 @@ import { memo } from 'react';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
-className?: string;
+    className?: string;
 }
 function ArticleDetailsPage(props: ArticleDetailsPageProps) {
     const { className } = props;
