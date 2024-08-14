@@ -24,6 +24,9 @@ export function buildWebpackConfig(
             filename: '[name].[contenthash].js',
             path: paths.build,
             clean: true,
+            // чанки грузятся из папки articles, хотя чанки грузятся из корня
+            // делаем загрузку чанков из корня
+            publicPath: '/',
         },
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,

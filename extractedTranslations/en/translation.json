@@ -1,4 +1,14 @@
 {
+  "article": {
+    "articles_details": "articles_details",
+    "articles_page": "articles_page"
+  },
+  "articles": {
+    "article_details": "article_details",
+    "articles_details": "articles_details"
+  },
+  "articles_details": "articles_details",
+  "articles_page": "articles_page",
   "country_label": "",
   "currency_label": "",
   "throw error": "throw error",
