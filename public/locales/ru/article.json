@@ -1,4 +1,6 @@
 {
   "article.articles_page": "Страница статей",
-  "article.articles_details": "Детальная страница статьи"
+  "article.articles_details": "Детальная страница статьи",
+  "article.article_not_found": "Статья не найдена :(",
+  "loading_error": "Ошибка загрузки"
 }

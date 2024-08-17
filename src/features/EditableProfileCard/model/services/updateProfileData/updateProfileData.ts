@@ -9,7 +9,7 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
     'profile/updateProfileData',
     async (_, thunkAPI) => {
         const { extra, rejectWithValue, getState } = thunkAPI;
-        // данные, которые получаем из формы отправляем на сервер
+        // получаем данные из формы
         const formData = getProfileForm(getState());
 
         const errors = validateProfileData(formData);

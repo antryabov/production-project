@@ -1,4 +1,6 @@
 {
   "article.articles_page": "Articles page",
-  "article.articles_details": "Article details page"
+  "article.articles_details": "Article details page",
+  "article.article_not_found": "Article not found :(",
+  "loading_error": "Loading error"
 }
