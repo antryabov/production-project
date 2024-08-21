@@ -18,5 +18,6 @@
   "Профиль": "Profile",
   "currency_label": "Specify currency",
   "country_label": "Specify country",
-  "Статьи": "Articles"
+  "Статьи": "Articles",
+  "Comment_not_found": "Comments not found"
 }

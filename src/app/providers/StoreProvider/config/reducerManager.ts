@@ -24,7 +24,7 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateSch
                 // очищаем массив после удаления
                 keysToRemove = [];
             }
-            // возвращает оставшийся стейт без удаленного редюсера
+            // возвращает оставшийся редюсеры
             return combinedReducer(state, action);
         },
         add: (key: StateSchemaKey, reducer: Reducer) => {

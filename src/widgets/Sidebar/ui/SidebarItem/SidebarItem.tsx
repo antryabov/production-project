@@ -18,7 +18,6 @@ function SidebarItem(props: SidebarItemProps) {
         collapsed,
     } = props;
     const isAuth = useSelector(getUserAuthData);
-
     const { t } = useTranslation();
 
     // тот item, который не подходит под условия не будет отрисовываться

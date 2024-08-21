@@ -7,7 +7,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -94,30 +96,124 @@
       "text": "Спасибо(",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "text": "new comment",
+      "articleId": "1",
+      "userId": "1",
+      "id": "F5fyyhh"
+    },
+    {
+      "text": "new comment",
+      "articleId": "1",
+      "userId": "1",
+      "id": "3Eb0QPF"
+    },
+    {
+      "text": "new comment",
+      "articleId": "1",
+      "userId": "1",
+      "id": "lYuZ0OW"
+    },
+    {
+      "text": "Здарова",
+      "articleId": "1",
+      "userId": "1",
+      "id": "pg-oL_j"
+    },
+    {
+      "text": "hello",
+      "articleId": "1",
+      "userId": "2",
+      "id": "gn_n4Oo"
+    },
+    {
+      "text": "123",
+      "articleId": "1",
+      "userId": "2",
+      "id": "Raag3cE"
+    },
+    {
+      "text": "5555",
+      "articleId": "1",
+      "userId": "2",
+      "id": "jHF6VD2"
+    },
+    {
+      "text": "11123",
+      "articleId": "1",
+      "userId": "2",
+      "id": "FN9EhD1"
+    },
+    {
+      "text": "sssss",
+      "articleId": "1",
+      "userId": "2",
+      "id": "Lqm9Anj"
+    },
+    {
+      "text": "555",
+      "articleId": "1",
+      "userId": "2",
+      "id": "8guLJ5i"
+    },
+    {
+      "text": "qw",
+      "articleId": "1",
+      "userId": "2",
+      "id": "MxDPrfE"
+    },
+    {
+      "text": "qwerty",
+      "articleId": "1",
+      "userId": "2",
+      "id": "WBEIKpe"
+    },
+    {
+      "text": "123",
+      "articleId": "1",
+      "userId": "2",
+      "id": "WB1tfu_"
     }
   ],
-  "profile": {
-    "first": "Anton",
-    "lastname": "Ryabov",
-    "age": 27,
-    "currency": "USD",
-    "country": "Kazakhstan",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://img.freepik.com/free-vector/creative-hacker-logo-template_23-2149199402.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723161600&semt=ais_hybrid"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "first": "Anton123",
+      "lastname": "Ryabov",
+      "age": 27,
+      "currency": "USD",
+      "country": "Kazakhstan",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://img.freepik.com/free-vector/creative-hacker-logo-template_23-2149199402.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723161600&semt=ais_hybrid"
+    },
+    {
+      "id": "2",
+      "first": "Vika",
+      "lastname": "Ryabova",
+      "age": 27,
+      "currency": "USD",
+      "country": "Kazakhstan",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://img.freepik.com/free-vector/creative-hacker-logo-template_23-2149199402.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723161600&semt=ais_hybrid"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://img.freepik.com/free-vector/creative-hacker-logo-template_23-2149199402.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723161600&semt=ais_hybrid"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://teknotower.com/wp-content/uploads/2020/11/js.png"
     }
   ]
 }

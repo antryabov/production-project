@@ -4,6 +4,7 @@ import { Currency } from 'entities/Currency';
 import { fetchProfileData } from './fetchProfileData';
 
 const data = {
+    id: '1',
     username: 'admin',
     age: 27,
     country: Country.Armenia,
@@ -21,7 +22,7 @@ describe('fetchProfileData', () => {
         thunk.api.get.mockReturnValue(Promise.resolve({ data }));
 
         // callThunk асинхронная функция
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk(data.id);
         // будет возможность запускать thunk много раз, если будет какой-то изощренный кейс
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
@@ -31,7 +32,7 @@ describe('fetchProfileData', () => {
     test('error fetch data', async () => {
         const thunk = new TestAsyncThunk(fetchProfileData);
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk(data.id);
 
         expect(result.meta.requestStatus).toBe('rejected');
     });

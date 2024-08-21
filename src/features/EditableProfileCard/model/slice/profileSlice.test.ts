@@ -5,6 +5,7 @@ import { profileAction, profileReducer } from './profileSlice';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const data = {
+    id: '1',
     username: 'admin',
     age: 27,
     country: Country.Armenia,

@@ -1,0 +1,28 @@
+{
+  "": "",
+  "Comment_not_found": "Comment_not_found",
+  "add_new_comment": "add_new_comment",
+  "article": {
+    "articles_page": "articles_page"
+  },
+  "article_not_found": "article_not_found",
+  "comment": "comment",
+  "commentary": "commentary",
+  "country_label": "country_label",
+  "currency_label": "currency_label",
+  "send": "send",
+  "send_comment": "send_comment",
+  "throw error": "throw error",
+  "write_new_comment": "write_new_comment",
+  "Войти": "Войти",
+  "Вы ввели неверный логин или пароль": "Вы ввели неверный логин или пароль",
+  "Выйти": "Выйти",
+  "Главная страница": "Главная страница",
+  "Имя пользователя": "Имя пользователя",
+  "О сайте": "О сайте",
+  "Обновить страницу": "Обновить страницу",
+  "Пароль": "Пароль",
+  "Произошла ошибка": "Произошла ошибка",
+  "Страница не найдена": "Страница не найдена",
+  "Форма авторизации": "Форма авторизации"
+}

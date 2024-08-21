@@ -2,5 +2,10 @@
   "article.articles_page": "Страница статей",
   "article.articles_details": "Детальная страница статьи",
   "article.article_not_found": "Статья не найдена :(",
-  "loading_error": "Ошибка загрузки"
+  "loading_error": "Ошибка загрузки",
+  "comment": "comment",
+  "article.write_new_comment": "Написать новый комментарий",
+  "article.send_comment": "Отправить",
+  "article.add_new_comment": "Добавить новый комментарий",
+  "article.send": "Отправить"
 }

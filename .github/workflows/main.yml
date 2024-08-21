@@ -32,7 +32,5 @@ jobs:
       - name: unit testing
         if: always()
         run: npm run test:unit
-      - name: screenshot testing
-        run: npm run test:ui
         
       

@@ -7,6 +7,8 @@ import { Loader } from 'shared/ui/Loader/Loader';
 import Avatar from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../../features/EditableProfileCard/model/types/profileSchema';
 
@@ -44,6 +46,7 @@ function ProfileCard(props: ProfileCardProps) {
     } = props;
     // выбираем ns
     const { t } = useTranslation('profile');
+    const authData = useSelector(getUserAuthData);
 
     if (isLoading) {
         return (

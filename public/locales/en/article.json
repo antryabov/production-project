@@ -2,5 +2,11 @@
   "article.articles_page": "Articles page",
   "article.articles_details": "Article details page",
   "article.article_not_found": "Article not found :(",
-  "loading_error": "Loading error"
+  "loading_error": "Loading error",
+  "commentary": "commentary",
+  "comment": "comment",
+  "article.write_new_comment": "Post a new comment",
+  "article.send_comment": "Send",
+  "article.add_new_comment": "Add new comment",
+  "article.send": "Send"
 }

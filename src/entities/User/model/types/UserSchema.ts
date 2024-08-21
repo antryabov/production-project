@@ -1,7 +1,13 @@
+/* enum Role {
+    ADMIN = 'admin',
+    USER = 'user'
+} */
+
 // для самого юзера
 export interface User {
     id: string,
-    username: string
+    username: string,
+    avatar?: string
 }
 // для стейта
 export interface UserSchema {
