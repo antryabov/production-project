@@ -19,5 +19,7 @@
   "currency_label": "Укажите валюту",
   "country_label": "Укажите страну",
   "Статьи": "Статьи",
-  "Comment_not_found": "Комментарии отсутствуют"
+  "Comment_not_found": "Комментарии отсутствуют",
+  "read_continue": "Читать далее...",
+  "article.back_to_list": "Назад к списку постов"
 }

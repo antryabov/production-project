@@ -19,5 +19,7 @@
   "currency_label": "Specify currency",
   "country_label": "Specify country",
   "Статьи": "Articles",
-  "Comment_not_found": "Comments not found"
+  "Comment_not_found": "Comments not found",
+  "read_continue": "Read continue...",
+  "article.back_to_list": "Back to posts list"
 }

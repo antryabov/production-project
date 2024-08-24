@@ -1,18 +1,20 @@
 import 'app/styles/index.scss';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Article, ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
-import ArticleDetails from './ArticleDetails';
+import {
+    Article, ArticleBlockType, ArticleType, ArticleView,
+} from 'entities/Article/model/types/article';
+import ArticleList from './ArticleList';
 
 export default {
-    title: 'entities/ArticleDetails',
-    component: ArticleDetails,
+    title: 'entities/ArticleList',
+    component: ArticleList,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ArticleDetails>;
+} as ComponentMeta<typeof ArticleList>;
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
+const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />;
 
 const article: Article = {
     id: '1',
@@ -87,26 +89,31 @@ const article: Article = {
         },
     ],
 };
+
 export const Primary = Template.bind({});
-Primary.args = {};
-Primary.decorators = [StoreDecorator({
-    articleDetails: {
-        data: article,
-    },
-})];
+Primary.args = {
+    articles: [article, article, article],
+};
+Primary.decorators = [StoreDecorator({})];
 
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [StoreDecorator({
-    articleDetails: {
-        isLoading: true,
-    },
-})];
+export const PrimaryList = Template.bind({});
+PrimaryList.args = {
+    articles: [article, article, article],
+    view: ArticleView.LIST,
+};
+PrimaryList.decorators = [StoreDecorator({})];
 
-export const Error = Template.bind({});
-Error.args = {};
-Error.decorators = [StoreDecorator({
-    articleDetails: {
-        error: 'error',
-    },
-})];
+export const PrimaryIsLoading = Template.bind({});
+PrimaryIsLoading.args = {
+    articles: [article, article, article],
+    isLoading: true,
+};
+PrimaryIsLoading.decorators = [StoreDecorator({})];
+
+export const PrimaryListIsLoading = Template.bind({});
+PrimaryListIsLoading.args = {
+    articles: [article, article, article],
+    isLoading: true,
+    view: ArticleView.LIST,
+};
+PrimaryListIsLoading.decorators = [StoreDecorator({})];

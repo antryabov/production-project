@@ -25,7 +25,7 @@ export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfi
         const newComment = {
             text,
             articleId: article?.id,
-            userId: userData.id,
+            userId: userData?.id,
         };
 
         try {
