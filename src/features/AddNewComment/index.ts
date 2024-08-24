@@ -1,7 +1,7 @@
-import { addNewCommentSchema } from './model/types/addNewComment';
+import { AddNewCommentSchema } from './model/types/addNewComment';
 import { AddNewCommentAsync } from './ui/AddNewComment/AddNewComment.async';
 
 export {
-    addNewCommentSchema,
+    AddNewCommentSchema,
     AddNewCommentAsync as AddNewComment,
 };
