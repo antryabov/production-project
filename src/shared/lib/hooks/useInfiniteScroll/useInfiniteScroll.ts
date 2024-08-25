@@ -13,10 +13,15 @@ export function useInfiniteScroll({
 }: UseInfiniteScrollProps) {
     const observer = useRef<IntersectionObserver | null>(null);
     useEffect(() => {
+        // замыкаем элементы внутри, т.к. они прилетают извне и могут быть удалены
+        // сделано это, для того, чтобы иметь доступ к дом нодам в случае, если компонент уже демонтировался
+        const wrapperElement = wrapperRef.current;
+        const triggerElement = triggerRef.current;
+
         if (callback) {
             const options = {
             // рут это там, где находится скролл
-                root: wrapperRef.current,
+                root: wrapperElement,
                 rootMargin: '0px',
                 threshold: 1.0,
             };
@@ -27,13 +32,14 @@ export function useInfiniteScroll({
                 }
             }, options);
 
-            observer.current.observe(triggerRef.current);
+            observer.current.observe(triggerElement);
         }
         return () => {
             // объект реф, где ссылка на объект меняться не будет, поэтому, создавать под реф отдельную переменную не надо
-            if (observer.current && triggerRef.current) {
+            if (observer.current && triggerElement) {
+                // debugger;
                 // eslint-disable-next-line react-hooks/exhaustive-deps
-                observer.current.unobserve(triggerRef.current);
+                observer.current.unobserve(triggerElement);
             }
         };
     }, [callback, triggerRef, wrapperRef]);
