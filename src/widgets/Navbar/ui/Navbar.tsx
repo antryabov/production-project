@@ -36,35 +36,39 @@ function Navbar({ className }: NavbarProps) {
 
     if (authData) {
         return (
-            <div className={classNames(cls.Navbar, {}, [className])}>
-                <Button
-                    theme={ButtonTheme.CLEAR_INVERTED}
-                    className={cls.links}
-                    onClick={onLogout}
-                >
-                    {t('Выйти')}
-                </Button>
-            </div>
+            <header>
+                <nav className={classNames(cls.Navbar, {}, [className])}>
+                    <Button
+                        theme={ButtonTheme.CLEAR_INVERTED}
+                        className={cls.links}
+                        onClick={onLogout}
+                    >
+                        {t('Выйти')}
+                    </Button>
+                </nav>
+            </header>
         );
     }
 
     return (
-        <div className={classNames(cls.Navbar, {}, [className])}>
-            <Button
-                theme={ButtonTheme.CLEAR_INVERTED}
-                className={cls.links}
-                onClick={onShowModal}
-            >
-                {t('Войти')}
-            </Button>
-            {/* демонтируем при закрытии */}
-            {isAuthModal && (
-                <LoginModal
-                    isOpen={isAuthModal}
-                    onClose={onCloseModal}
-                />
-            )}
-        </div>
+        <header>
+            <nav className={classNames(cls.Navbar, {}, [className])}>
+                <Button
+                    theme={ButtonTheme.CLEAR_INVERTED}
+                    className={cls.links}
+                    onClick={onShowModal}
+                >
+                    {t('Войти')}
+                </Button>
+                {/* демонтируем при закрытии */}
+                {isAuthModal && (
+                    <LoginModal
+                        isOpen={isAuthModal}
+                        onClose={onCloseModal}
+                    />
+                )}
+            </nav>
+        </header>
     );
 }
 

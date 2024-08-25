@@ -20,11 +20,11 @@ function App() {
             {/* suspense нужен для i18n. Можно указать фоллбек, если много текста, который будет долго грузиться */}
             <Suspense fallback="">
                 <Navbar />
-                <div className="content-page">
+                <main className="content-page">
                     <Sidebar />
                     {/* отрисовываем страницы в content-page */}
                     {mounted && <AppRouter />}
-                </div>
+                </main>
             </Suspense>
         </div>
     );

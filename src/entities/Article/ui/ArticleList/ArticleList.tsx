@@ -29,14 +29,6 @@ function ArticleList(props: ArticleListProps) {
     } = props;
     const { t } = useTranslation();
 
-    if (isLoading) {
-        return (
-            <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-                {getSkeletons(view)}
-            </div>
-        );
-    }
-
     const renderArticle = (article: Article) => (
         <ArticleListItem
             className={cls.card}
@@ -50,7 +42,8 @@ function ArticleList(props: ArticleListProps) {
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
             {articles.length > 0
                 ? articles.map(renderArticle)
-                : 'Пусто'}
+                : null}
+            {isLoading && getSkeletons(view)}
         </div>
     );
 }

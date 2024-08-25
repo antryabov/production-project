@@ -28,7 +28,7 @@ function Sidebar({ className }: SidebarProps) {
     )), [collapsed, sidebarItemsList]);
 
     return (
-        <div
+        <aside
             data-testid="sidebar"
             className={classNames(cls.Sidebar, {
                 [cls.collapsed]: collapsed,
@@ -53,7 +53,7 @@ function Sidebar({ className }: SidebarProps) {
                 <LangSwitcher short={collapsed} className={cls.lang} />
                 <ThemeSwitcher />
             </div>
-        </div>
+        </aside>
     );
 }
 

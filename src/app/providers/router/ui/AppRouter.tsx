@@ -8,7 +8,7 @@ function AppRouter() {
     // обёртка для приватных роутов
     const renderWithWrapper = useCallback((route: AppRoutesProps) => {
         const element = (
-            <div className="page-wrapper">{route.element}</div>
+            <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
         );
 
         return (

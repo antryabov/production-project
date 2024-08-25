@@ -37,17 +37,19 @@ function ArticleViewSelector(props: ArticleViewSelectorProps) {
     return (
         <div className={classNames(cls.ArticleViewSelector, {}, [className])}>
             {viewTypes.map((viewType) => (
-                <Button
-                    onClick={onClick(viewType.view)}
-                    theme={ButtonTheme.CLEAR}
-                >
-                    <Icon
-                        Svg={viewType.icon}
-                        className={classNames('', {
-                            [cls.notSelected]: viewType.view !== view,
-                        })}
-                    />
-                </Button>
+                <div>
+                    <Button
+                        onClick={onClick(viewType.view)}
+                        theme={ButtonTheme.CLEAR}
+                    >
+                        <Icon
+                            Svg={viewType.icon}
+                            className={classNames('', {
+                                [cls.notSelected]: viewType.view !== view,
+                            })}
+                        />
+                    </Button>
+                </div>
             ))}
         </div>
     );
