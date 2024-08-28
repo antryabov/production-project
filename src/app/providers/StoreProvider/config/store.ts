@@ -4,7 +4,7 @@ import {
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
-import { NavigateOptions, To } from 'react-router-dom';
+import { scrollSaveReducer } from 'features/ScrollSave';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
@@ -12,7 +12,6 @@ import { createReducerManager } from './reducerManager';
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-    navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     // ReducersMapObject - тип для корневого редюсера в сторе
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -21,6 +20,7 @@ export function createReduxStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        scrollSave: scrollSaveReducer,
     };
 
     // менеджер принимает рутовый редюсер
@@ -29,8 +29,6 @@ export function createReduxStore(
     // вынесли отдельно extra аргументы из за проблемы с типами
     const extraArg: ThunkExtraArg = {
         api: $api,
-        // для того, чтобы навигировать после запроса
-        navigate,
     };
 
     const store = configureStore({

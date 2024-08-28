@@ -22,6 +22,7 @@ const initialState = articlesAdapter.getInitialState<ArticlesPageSchema>({
     entities: {},
     page: 1,
     hasMore: true,
+    _inited: false,
 });
 
 export const ArticlesPageSlice = createSlice({
@@ -41,7 +42,10 @@ export const ArticlesPageSlice = createSlice({
             const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ArticleView;
             state.view = view;
             // пагинация
-            state.limit = view === ArticleView.LIST ? 4 : 9;
+            state.limit = view === ArticleView.LIST ? 4 : 11;
+
+            // для первоначальной загрузки данных в ActiclesPage
+            state._inited = true;
         },
     },
     extraReducers: (builder) => {

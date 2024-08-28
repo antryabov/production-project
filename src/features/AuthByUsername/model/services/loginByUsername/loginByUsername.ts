@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
 
@@ -34,7 +33,6 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
                 throw new Error();
             }
 
-            extra.navigate?.('/profile');
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             // сохраняем данные в стейт юзера
             dispatch(userActions.setAuthData(response.data)); // 2

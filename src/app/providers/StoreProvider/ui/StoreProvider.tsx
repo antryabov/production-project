@@ -20,15 +20,16 @@ export function StoreProvider(props: StoreProviderProps) {
         asyncReducers,
     } = props;
 
+    // DELETE: навигейт из стора убираем, потому что стейт заново инициализируется (происходит ререндер компонента после перехода на страницы)
     // функция для перемещения по роутам
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // После deep partial кастуем к StateSchema
     const store = createReduxStore(
         // здесь кастовать к типам это вынужденная необходимость(в конфигурационных файла это иногда можно)
         initialState as StateSchema,
         asyncReducers as ReducersMapObject<StateSchema>,
-        navigate,
+        // navigate,
     );
 
     return (

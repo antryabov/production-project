@@ -34,6 +34,7 @@ export function useInfiniteScroll({
 
             observer.current.observe(triggerElement);
         }
+
         return () => {
             // объект реф, где ссылка на объект меняться не будет, поэтому, создавать под реф отдельную переменную не надо
             if (observer.current && triggerElement) {

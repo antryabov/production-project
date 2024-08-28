@@ -9,7 +9,8 @@ i18n.use(Backend)
     .use(initReactI18next)
     .init({
         fallbackLng: 'ru', // язык приложения по умолчанию
-        debug: __IS_DEV__, // глобальная переменная, которая указана в плагине DefinePlugin wp
+        // debug: __IS_DEV__, // глобальная переменная, которая указана в плагине DefinePlugin wp
+        debug: false, // глобальная переменная, которая указана в плагине DefinePlugin wp
 
         interpolation: {
             escapeValue: false,

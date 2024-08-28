@@ -34,7 +34,7 @@ function AddNewComment(props: addNewCommentProps) {
     }, [dispatch]);
 
     const onSendHandler = useCallback(() => {
-        onSendComment(commentText || '');
+        onSendComment(commentText);
         onChangeCommentText('');
     }, [commentText, onChangeCommentText, onSendComment]);
 
