@@ -21,5 +21,18 @@
   "Статьи": "Articles",
   "Comment_not_found": "Comments not found",
   "read_continue": "Read continue...",
-  "article.back_to_list": "Back to posts list"
+  "article.back_to_list": "Back to posts list",
+  "sort": "Sorted",
+  "search": "Searching",
+  "by": "by",
+  "ascending": "ascending",
+  "descending": "descending",
+  "created": "created at",
+  "title_sort": "title",
+  "views": "views",
+  "IT": "IT",
+  "economics": "Economics",
+  "all": "All",
+  "science": "Science",
+  "articles_notfound": "Articles not found"
 }

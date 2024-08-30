@@ -1,10 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article } from 'entities/Article';
-import { getArticlesLimit } from '../../selectors/articles';
+import { Article, ArticleType } from 'entities/Article';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+import {
+    getArticlesLimit, getArticlesOrder, getArticlesPageNum, getArticlesSearch, getArticlesSort,
+    getArticlesType,
+} from '../../selectors/articles';
 
 interface FetchArticlesListProps {
-    page?: number;
+    // в fullfilled стоит addMany и все данные в конец
+    // но для фильтрации на не нужно в конец, нам нужно перезаписать данные
+    replace?: boolean;
 }
 
 // <возвращаемое тип, тип аргумента, ThunkConfig>
@@ -17,17 +23,28 @@ export const fetchArticlesList = createAsyncThunk<
         'articlesPage/fetchArticlesList',
         async (props, thunkAPI) => {
             const { extra, rejectWithValue, getState } = thunkAPI;
+            const { replace } = props;
 
-            const { page = 1 } = props;
-
+            const order = getArticlesOrder(getState());
+            const sort = getArticlesSort(getState());
+            const search = getArticlesSearch(getState());
             const limit = getArticlesLimit(getState());
+            const page = getArticlesPageNum(getState());
+            const type = getArticlesType(getState());
 
             try {
+                addQueryParams({
+                    sort, order, search, type,
+                });
                 const response = await extra.api.get<Article[]>('/articles/', {
                     params: {
                         _expand: 'user',
                         _limit: limit,
                         _page: page,
+                        _sort: sort,
+                        _order: order,
+                        q: search,
+                        type: type === ArticleType.ALL ? undefined : type,
                     },
                 });
 

@@ -21,5 +21,18 @@
   "Статьи": "Статьи",
   "Comment_not_found": "Комментарии отсутствуют",
   "read_continue": "Читать далее...",
-  "article.back_to_list": "Назад к списку постов"
+  "article.back_to_list": "Назад к списку постов",
+  "sort": "Сортировка",
+  "search": "Поиск",
+  "by": "по",
+  "ascending": "по возрастанию",
+  "descending": "по убыванию",
+  "created": "дате созданию",
+  "title_sort": "заголовкам",
+  "views": "просмотрам",
+  "IT": "ИТ",
+  "economics": "Экономика",
+  "all": "Все",
+  "science": "Наука",
+  "articles_notfound": "Статьи не найдены"
 }

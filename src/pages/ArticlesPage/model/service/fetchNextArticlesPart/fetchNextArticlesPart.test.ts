@@ -1,5 +1,6 @@
 import { TestAsyncThunk } from 'shared/config/tests/TestAsyncThunk/TestAsyncThunk';
 
+import { ArticleSortField, ArticleType } from 'entities/Article';
 import { fetchNextArticlesPart } from './fetchNextArticlesPart';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
@@ -16,13 +17,17 @@ describe('fetchNextArticlesPart', () => {
                 limit: 5,
                 isLoading: false,
                 hasMore: true,
+                search: '',
+                order: 'asc',
+                sort: ArticleSortField.CREATED,
+                type: ArticleType.ALL,
             },
         });
 
         await thunk.callThunk();
 
         expect(thunk.dispatch).toBeCalledTimes(4);
-        expect(fetchArticlesList).toBeCalledWith({ page: 3 });
+        expect(fetchArticlesList).toBeCalledWith({});
     });
 
     test('fetch not called', async () => {
