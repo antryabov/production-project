@@ -1,11 +1,13 @@
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManager, StateSchemaKey } from 'app/providers/StoreProvider';
+import { ReduxStoreWithManager, StateSchema, StateSchemaKey } from 'app/providers/StoreProvider';
 import { ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 export type ReducersList = {
-    [name in StateSchemaKey]?: Reducer
+    // редюсер берет без абстрактной any типа схемы, а динамически по названию из стейт схемы по названию достают редюсер
+    // т.е. мы забираем поле из StateSchema в зависимости от того, какой редусер указан у этого поля
+    [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>
 }
 
 interface DynamicModuleLoaderProps {

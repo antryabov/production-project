@@ -7,5 +7,6 @@
   "article.write_new_comment": "Написать новый комментарий",
   "article.send_comment": "Отправить",
   "article.add_new_comment": "Добавить новый комментарий",
-  "article.send": "Отправить"
+  "article.send": "Отправить",
+  "article.recommendations": "Рекомендованные статьи"
 }

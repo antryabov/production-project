@@ -9,7 +9,7 @@ import { AddNewCommentSchema } from 'features/AddNewComment';
 import { LoginSchema } from 'features/AuthByUsername';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { scrollSaveSchema } from 'features/ScrollSave';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 
 // Все типы связанные с Redux и стейтом
@@ -22,7 +22,7 @@ export interface StateSchema {
     loginForm?: LoginSchema
     profile?: ProfileSchema
     articleDetails?: ArticleDetailsSchema
-    articleDetailsComments?: ArticleDetailsCommentsSchema
+    articlesDetailsPage?: ArticleDetailsPageSchema
     addNewComment?: AddNewCommentSchema
     articlesPage?: ArticlesPageSchema
 }

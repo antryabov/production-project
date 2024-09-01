@@ -8,5 +8,6 @@
   "article.write_new_comment": "Post a new comment",
   "article.send_comment": "Send",
   "article.add_new_comment": "Add new comment",
-  "article.send": "Send"
+  "article.send": "Send",
+  "article.recommendations": "Recommended articles"
 }
